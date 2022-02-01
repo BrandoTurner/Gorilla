@@ -1,25 +1,22 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import Records from './components/Records.js';
+import Receipt from './components/Receipt.js';
 import './App.css';
 
 function App() {
-  return (
+ 
+
+    const [receipts, setReceipts] = useState(Records);
+
+     
+ return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    {receipts.map((receiptData, index) => {
+      return <Receipt {...receiptData} key={index}/>
+    })}
     </div>
   );
+
 }
 
 export default App;
